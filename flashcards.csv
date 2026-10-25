@@ -1,0 +1,83 @@
+O que significa a sigla do padrão FAST na modelagem financeira?,"**Flexible** (Flexível), **Appropriate** (Adequado), **Structured** (Estruturado) e **Transparent** (Transparente)."
+"No padrão FAST de modelagem financeira, qual é a principal justificativa para a busca por flexibilidade?",Permitir modificações estruturais contínuas e a execução fluida de cenários por múltiplos usuários ao longo do tempo sem comprometer a lógica do modelo.
+O que caracteriza o erro de 'precisão espúria' na construção de modelos financeiros?,"Detalhar excessivamente variáveis secundárias (como alíquotas fiscais específicas), enquanto as premissas de maior impacto (como a receita) permanecem baseadas em estimativas incertas."
+Qual é a convenção estrita de sinais padronizada para registro de caixa no padrão FAST?,Todas as entradas de caixa (*inflows*) são registradas como valores positivos e todas as saídas de caixa (*outflows*) estritamente como valores negativos.
+O que é a mecânica de *corkscrew* (saca-rolhas) na atualização de saldos patrimoniais em um modelo financeiro?,"É a estrutura formal de cálculo em que o saldo final do período é determinado por:
+$$\text{Saldo Final}_t = \text{Saldo Inicial}_t + \text{Adições}_t - \text{Reduções}_t$$"
+Como o padrão FAST orienta o cálculo das despesas financeiras para evitar referências circulares na planilha?,"Calcula-se a despesa financeira com base no saldo de dívida do início do período:
+$$\text{Despesa Financeira}_t = D_{\text{inicial}, t} \times i_t$$"
+Como se confirma a verificação incondicional de integridade contábil do Balanço Patrimonial em um modelo financeiro?,"Garantindo que em todos os períodos projetados a seguinte equação retorne zero:
+$$\text{Ativo Total} - (\text{Passivo Total} + \text{Patrimônio Líquido}) = 0$$"
+Quasi são as três demonstrações financeiras fundamentais que integram o modelo 3SM (*3-Statement Model*)?,"1. Demonstração do Resultado do Exercício (DRE)
+2. Balanço Patrimonial (BP)
+3. Demonstração dos Fluxos de Caixa (DFC)"
+Como a despesa de Depreciação e Amortização se conecta simultaneamente às três demonstrações financeiras?,"1. **DRE**: É reconhecida como despesa operacional, reduzindo o resultado contábil.
+2. **Balanço**: Reduz o valor contábil acumulado do ativo imobilizado/intangível.
+3. **DFC**: É somada de volta ao Lucro Líquido no Fluxo de Caixa Operacional (FCO) por não representar saída efetiva de caixa."
+Como a variação na necessidade de capital de giro ($\Delta NWC$) afeta a geração de caixa operacional?,"O aumento na necessidade de capital de giro consome caixa (reduz o FCO), enquanto a liberação de capital de giro gera caixa (aumenta o FCO)."
+Como é calculado o EBITDA a partir das linhas de receita e custos da DRE?,$$EBITDA = \text{Receita Líquida} - CPV - OpEx$$
+Qual é a função principal de um Diagrama de Tornado na análise de sensibilidade de um modelo financeiro?,Ordenar horizontalmente as variáveis de entrada de acordo com a magnitude do seu impacto na métrica final de saída (como o VPL ou a TIR).
+Qual é a principal limitação da análise de passe único (*Single Pass*) em um Diagrama de Tornado?,"Ela desloca apenas uma variável por vez mantendo todas as outras fixas, ignorando as correlações e interações dinâmicas entre variáveis interdependentes."
+Como a Simulação de Monte Carlo expande o tratamento da incerteza em relação aos cenários determinísticos?,"Substitui premissas estáticas pontuais por distribuições contínuas de probabilidade, sorteando aleatoriamente milhares de combinações para construir a distribuição empírica do resultado."
+Em quais situações de modelagem estocástica a distribuição **triangular** é mais indicada?,"Quando há dados históricos limitados, sendo necessários apenas os parâmetros de valor mínimo, mais provável e máximo (frequente em custos operacionais e prazos de projetos)."
+"Por que a distribuição **lognormal** é utilizada para modelar preços de ativos, volume de vendas e múltiplos de mercado?",Porque é adequada a variáveis financeiras que não podem assumir valores negativos e que apresentam assimetria positiva (à direita).
+"O que representam os percentis P50, P80 e P90 na curva de saída de uma Simulação de Monte Carlo?","Limites prudenciais de probabilidade acumulada indicando que há 50%, 80% ou 90% de probabilidade de o resultado real atingir ou superar aquele patamar."
+Qual é a vantagem técnica do uso da biblioteca Python **FinancePy** em relação à velocidade de execução?,Utiliza compilação *Just-In-Time* via Numba para executar precificações e simulações com velocidades próximas a linguagens compiladas como C++.
+Qual e o papel primário da biblioteca Python **QuantLib** (PyQL) na engenharia financeira?,"Construção de curvas de rendimento (*yield curves*), modelagem da estrutura a termo das taxas de juros e precificação de instrumentos e derivativos complexos."
+Quais são as duas principais certificações internacionais de modelagem financeira concedidas pelo *Financial Modeling Institute* (FMI)?,"1. *Advanced Financial Modeler* (AFM)
+2. *Chartered Financial Modeler* (CFM)"
+Qual e o formato do exame prático para obtenção da certificação AFM do FMI?,"Construção ao vivo de um modelo de 3 demonstrações totalmente integrado, formatado e sem erros contábeis, a partir de um caso não estruturado, em 4 horas contínuas sob supervisão."
+Qual e a diferença metodológica de avaliação entre a certificação AFM (FMI) e a FMVA (CFI)?,O AFM avalia a capacidade de execução prática de modelagem do zero sob estrita pressão de tempo. A FMVA foca no consumo autoguiado de uma grade curricular ampla avaliada por testes conceituais online.
+Qual é a diferença de foco entre a **DRE Contábil** e a **DRE Gerencial**?,A DRE Contábil foca no registro histórico e no cumprimento de exigências fiscais/societárias. A DRE Gerencial reorganiza as informações para tomada de decisões estratégicas e gestão do futuro.
+O que estabelece a norma **CPC 51 / IFRS 18** quanto à nova estrutura de apresentação da DRE a partir de 2027?,Substitui o formato tradicional da DRE por uma estrutura padronizada dividida em 5 categorias obrigatórias para aumentar a comparabilidade internacional.
+"Na estrutura da DRE sob a norma CPC 51 / IFRS 18, quais são as 5 categorias obrigatórias de classificação de receitas e despesas?","1. Operacional
+2. Investimento
+3. Financiamento
+4. Tributos sobre o Lucro
+5. Operações Descontinuadas"
+"Na Nova DRE (CPC 51 / IFRS 18), como passa a ser classificado o rendimento de aplicações financeiras para empresas comerciais ou de serviços?","Na categoria de **Investimento** (Resultado de investimentos), separando-o da atividade operacional direta da empresa."
+"Na Nova DRE (CPC 51 / IFRS 18), em qual categoria especifica devem ser alocados os juros decorrentes de empréstimos e financiamentos?",Na categoria de **Financiamento** (Resultado de financiamento).
+Em que consiste a 'Técnica dos 3 Blocos' para análise executiva rápida do Balanço Patrimonial?,"Consiste em interpretar o balanço através de três perspectivas centrais:
+1. **Curto Prazo** (Análise de Liquidez)
+2. **Longo Prazo** (Estrutura de Capital e Solidez)
+3. **Operação** (Eficiência e Ciclo Financeiro)"
+"Na análise de Balanço pelo Bloco de Curto Prazo, qual condição gera alerta imediato de risco de liquidez?","Quando o Passivo Circulante supera o Ativo Circulante, ou quando a dívida de curto prazo domina a estrutura de obrigações da empresa."
+O que significa o alerta operacional de uma empresa 'crescendo para quebrar'?,"Ocorre quando o aumento das vendas demanda um volume de capital de giro operacional superior à capacidade da empresa de gerar caixa, gerando estrangulamento de liquidez."
+Qual e a fórmula para o cálculo do Ciclo Financeiro (Ciclo de Conversão de Caixa)?,"$$\text{Ciclo Financeiro} = \text{PMR} + \text{PME} - \text{PMP}$$
+*(Prazo Médio de Recebimento + Prazo Médio de Estoque - Prazo Médio de Pagamento)*"
+"Se uma empresa possui PMR de 60 dias, PME de 45 dias e PMP de 30 dias, qual e o seu Ciclo Financeiro?","$$60 + 45 - 30 = 75\text{ dias}$$
+A empresa precisa financiar do seu próprio caixa 75 dias de operação."
+Qual e a diferença conceitual entre o Fluxo de Caixa pelo método **Direto** e pelo método **Indireto**?,"O método **Direto** exibe as movimentações brutas de pagamentos e recebimentos. O método **Indireto** reconcilia a geração de caixa a partir do lucro contábil, somando itens não caixa e variações de capital de giro."
+"Na montagem do Fluxo de Caixa Indireto partindo do Lucro Líquido, quais são os primeiros ajustes efetuados no bloco operacional?","Soma-se a despesa de Depreciação e Amortização e ajusta-se o resultado pelas variações das contas de capital de giro (Contas a Receber, Estoques e Fornecedores)."
+Qual e a vantagem de elaborar o Fluxo de Caixa Indireto partindo do **EBITDA** em vez do Lucro Líquido?,Isola a geração de caixa puramente operacional da empresa antes de qualquer efeito de impostos ou estrutura de financiamento/juros.
+"Na análise da DRE, qual risco e sinalizado quando os custos diretos crescem em ritmo superior ao das vendas?","Compressão da Margem Bruta, indicando perda de eficiência na produção, aumento no preço de insumos sem repasse ou concessão excessiva de descontos."
+"No Balanço Patrimonial, por que uma participação de Goodwill superior a 30% dos ativos é um sinal de alerta?","Indica elevado risco de teste de redução ao valor recuperável (*impairment*), caso aquisições passadas não atinjam as projeções de rentabilidade."
+"Na DFC, qual sinal positivo é demonstrado quando o Lucro Líquido e consistentemente menor que o Fluxo de Caixa Operacional?","Sinaliza alta qualidade do lucro contábil, confirmando que os ganhos reportados são respaldados por entrada efetiva de caixa nas operações."
+O que indica o crescimento acelerado da conta de Contas a Receber acima do ritmo de expansão das Vendas?,"Deterioração nas políticas de cobrança, aumento do risco de inadimplência ou faturamento antecipado não convertido em caixa."
+O que mede o Índice de Cobertura de Juros e qual valor e considerado patamar de alerta?,"Mede a capacidade operacional de cobrir despesas de juros com o lucro operacional (EBIT). Valores inferiores a 1,5 indicam vulnerabilidade financeira."
+Quais são os 6 principais tipos de modelos financeiros utilizados no ambiente corporativo?,"1. Modelo de 3 Demonstrações (3SM)
+2. Modelo DCF (Valuation)
+3. Orçamento e Forecast (FP&A)
+4. Modelo de M&A
+5. Modelo LBO (Private Equity)
+6. Project Finance (Infraestrutura)"
+Qual e a pergunta essencial que o modelo de avaliação por Fluxo de Caixa Descontado (DCF) visa responder?,"""Quanto vale uma empresa?"" (Apurando o *Enterprise Value* e o *Equity Value*)."
+Qual e a pergunta estratégica central respondida por um modelo de **LBO (Leveraged Buyout)** em Private Equity?,"""A dívida utilizada na aquisição gera retorno suficiente para os investidores de capitais próprios?"""
+Quais são os dois principais indicadores de resultado apurados em um modelo de valuation por DCF?,"1. *Enterprise Value* (Valor da Firma/Empresa)
+2. *Equity Value* (Valor do Patrimônio Líquido/Ações)"
+Qual e o foco de análise de um modelo financeiro do tipo **Project Finance**?,Avaliar se um projeto autônomo de infraestrutura (como rodovias ou energia) e capaz de se sustentar e pagar sua dívida exclusivamente com seus próprios fluxos de caixa.
+"No planejamento financeiro corporativo (FP&A), qual e a diferença entre **Budget** e **Forecast**?",**Budget** e o plano financeiro fixo aprovado para o ano. **Forecast** e a reestimativa periódica que atualiza as projeções combinando os dados reais com as novas expectativas.
+Qual e a função da plataforma open-source **OpenBB Platform** no ecossistema Python para finanças?,"Atuar como infraestrutura unificada para integração de dados de mercado (dados macroeconômicos, renda fixa, ações e derivativos) em rotinas analíticas."
+O que representa a Margem de Contribuição na análise da DRE Gerencial?,"A sobra da receita líquida após a dedução de todos os custos e despesas variáveis, indicando o valor disponível para cobrir os custos fixos e gerar lucro."
+Como e calculado o Ponto de Equilíbrio Financeiro/Operacional em receita de vendas na DRE Gerencial?,$$\text{Ponto de Equilíbrio} = \frac{\text{Custos e Despesas Fixas}}{\text{Margem de Contribuição (\%)}}$$
+"O que significa um Grau de Alavancagem Operacional (GAO) calculado em 3,67?","Significa que para cada variação de 1% na receita de vendas, o resultado operacional (EBIT) variará 3,67% na mesma direção."
+Quais são as três seções que compõem a Demonstração dos Fluxos de Caixa (DFC)?,"1. Fluxo de Caixa das Atividades Operacionais (FCO)
+2. Fluxo de Caixa das Atividades de Investimento (FCI)
+3. Fluxo de Caixa das Atividades de Financiamento (FCF)"
+Qual e o objetivo tático primário de uma projeção de caixa de 13 semanas na gestão financeira?,"Garantir a previsibilidade da liquidez imediata de curto prazo, identificando déficits de caixa com antecedência para renegociação de prazos ou captação prévia."
+O que representa a taxa **WACC** na modelagem de fluxo de caixa descontado?,"O Custo Médio Ponderado de Capital (*Weighted Average Cost of Capital*), utilizado como taxa de desconto para trazer os fluxos de caixa futuros ao valor presente."
+Qual e a orientação do padrão FAST quanto ao nível de transparência das fórmulas em planilhas institucionais?,"Manter fórmulas curtas, simples e diretas, sem aninhamentos complexos, garantindo fácil leitura e auditabilidade por terceiros."
+O que reflete o indicador de **Margem Bruta** em um diagnóstico de DRE?,"A eficiência direta na produção ou aquisição de bens/serviços, mostrando o percentual da receita que resta após cobrir o Custo dos Produtos Vendidos (CPV)."
+O que indica o índice **DSCR** (*Debt Service Coverage Ratio*) em modelos de infraestrutura e alavancagem?,A capacidade da geração de caixa operacional da empresa de honrar com o serviço total da dívida (principal + juros) no período.
+Por que a emissão de um parecer de auditoria com 'Abstenção de Opinião' e um sinal de alerta gravíssimo?,Porque indica a impossibilidade de comprovação da veracidade das demonstrações financeiras ou incertezas críticas sobre a continuidade operacional da companhia.
+"Diagrama com as três abordagens do Fluxo de Caixa Indireto partindo do Lucro Líquido, EBITDA e EBIT","A reconciliação pode partir do Lucro Líquido (foco na visão contábil final), do EBITDA (foco na geração operacional pura) ou do EBIT (foco na operação sem depreciação e sem alavancagem)."
